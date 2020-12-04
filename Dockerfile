@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/cwaffles/openpose
-FROM nvidia/cuda:10.0-cudnn7-devel
+FROM nvidia/cuda:10.2-cudnn8-devel
 
 #get deps
 RUN apt-get update && \
@@ -13,9 +13,9 @@ RUN pip3 install numpy opencv-python==4.0.0.21
 
 #replace cmake as old version has CUDA variable bugs
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.16.0/cmake-3.16.0-Linux-x86_64.tar.gz && \
-tar xzf cmake-3.16.0-Linux-x86_64.tar.gz -C /opt && \
-rm cmake-3.16.0-Linux-x86_64.tar.gz
-ENV PATH="/opt/cmake-3.16.0-Linux-x86_64/bin:${PATH}"
+tar xzf cmake-3.15.0-Linux-x86_64.tar.gz -C /opt && \
+rm cmake-3.15.0-Linux-x86_64.tar.gz
+ENV PATH="/opt/cmake-3.15.0-Linux-x86_64/bin:${PATH}"
 
 #get openpose
 WORKDIR /openpose
